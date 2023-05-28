@@ -1,0 +1,204 @@
+﻿<Window x:Class="DimplomStandart.Windows.DataReference.StudentWindows.AddEditStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DimplomStandart.Windows.DataReference.StudentWindows"
+        mc:Ignorable="d"
+        Title="Добавить/изменить студента" Height="800" Width="800"
+        >
+    <Grid>
+        <TabControl>
+            <TabItem Header="Личные данные">
+                <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <Label Content="Группа"/>
+                                <ComboBox x:Name="cmbGroup" Text="{Binding GroupStr}"/>
+                            </StackPanel>
+                            <Label Content="ФИО в именительном падеже:" Margin="0,20,0,0"/>
+                            <StackPanel Margin="20,20,0,0">
+
+                                <StackPanel>
+                                    <Label Content="Фамилия"/>
+                                    <TextBox Text="{Binding SurnameIm}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Имя"/>
+                                    <TextBox Text="{Binding NameIm}"/>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <Label Content="Отчество"/>
+                                    <TextBox Text="{Binding LastNameIm}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+
+
+                            <Label Content="ФИО в дательном падеже:" Margin="0,20,0,0"/>
+                            <StackPanel Margin="20,20,0,0">
+                                <StackPanel>
+                                    <Label Content="Фамилия"/>
+                                    <TextBox Text="{Binding SurnameDa}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Имя"/>
+                                    <TextBox Text="{Binding NameDa}"/>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <Label Content="Отчество"/>
+                                    <TextBox Text="{Binding LastNameDa}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Пол получателя"/>
+                                    <ComboBox x:Name="cmbGender" Text="{Binding Gender}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="СНИЛС"/>
+                                    <TextBox Text="{Binding Snils}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="40,0,0,0">
+                            <StackPanel Margin="20,0,0,0">
+
+                                <StackPanel>
+                                    <Label Content="Дата рождения"/>
+                                    <DatePicker SelectedDate="{Binding DateBorn}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Место рождения"/>
+                                    <TextBox Text="{Binding PlaceBorn}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Гражданство получателя(код)"/>
+                                    <ComboBox x:Name="cmbNationality" Text="{Binding CodeCountryStr}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Label Content="Пердыдущий документ об образовании:" Margin="0,20,0,0"/>
+                            <StackPanel Margin="20,20,0,0">
+                                <StackPanel>
+                                    <Label Content="Вид документа"/>
+                                    <TextBox Text="{Binding ViewDocument}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Год окончания"/>
+                                <TextBox Text="{Binding YearEndSchool}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Серия"/>
+                                    <TextBox Text="{Binding SeriesPastDocumentEducation}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Номер"/>
+                                    <TextBox Text="{Binding NumberPastDocumentEducation}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Наименование страны"/>
+                                <TextBox Text="{Binding CountryPastDocument}"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="Фамилия указанная в документах"/>
+                                    <TextBox Text="{Binding SurnamePastDocument}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                    
+
+            </TabItem>
+            <TabItem Header="Данные о документах">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Сведения о выдаваемом документе:"/>
+                        <StackPanel Margin="20,0,0,0">
+                            <StackPanel>
+                                <Label Content="Регистрационный номер"/>
+                                <TextBox Text="{Binding RegNumberIssueDocument}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Серия, номер бланка"/>
+                                <TextBox Text="{Binding SerialNumberIssueDocument}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Серии, номер бланков приложения"/>
+                                <TextBox Text="{Binding SerialNumberIssueApplication}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,20,0,20">
+                                <CheckBox Content="Дубликат"/>
+                                
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Дополнительные сведения"/>
+                                <TextBox Text="{Binding MoreInfo}"/>
+                            </StackPanel>
+
+                            <StackPanel>
+                                <Label Content="Год поступления"/>
+                                <TextBox Text="{Binding YearStart}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Год завершения обучения"/>
+                                <TextBox Text="{Binding YearEnd}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Источник финансирования обучения"/>
+                                <TextBox Text="{Binding SourceFunding}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <StackPanel Margin="20,0,0,0">
+                            
+                            
+                            <StackPanel>
+                                <Label Content="Примечание"/>
+                                <TextBox Text="{Binding Note}"/>
+                            </StackPanel>
+                            
+
+                            
+                        </StackPanel>
+                        <CheckBox IsChecked="{Binding IsContractCo}" x:Name="chbIsContractCo" Unchecked="chbIsContractCo_Unchecked"  Checked="chbIsContractCo_Checked" Content="Наличие договора о ЦО" Margin="0,20,0,0"/>
+
+                        <StackPanel Margin="20,0,0,0" IsEnabled="False" x:Name="stpContractCo">
+                            <StackPanel>
+                                <Label Content="Номер договора о ЦО"/>
+                                <TextBox Text="{Binding ContractCo}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Дата заключения договора о ЦО"/>
+                                <DatePicker SelectedDate="{Binding DateContractCo}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Наименование организации(договор о ЦО)"/>
+                                <TextBox Text="{Binding NameOrganisationEmployer}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="ОГРН организации"/>
+                                <TextBox Text="{Binding OgrnEmployer}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="КПП организации"/>
+                                <TextBox Text="{Binding KppEmployer}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="Субъект РФ"/>
+                                <TextBox Text="{Binding SubjectCo}"/>
+                            </StackPanel>
+                            
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <StackPanel HorizontalAlignment="Center"  VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,40">
+            <Button Content="Сохранить" x:Name="btnSave" Click="btnSave_Click"/>
+            <Button Content="Отменить" x:Name="btnCancel" Click="btnCancel_Click" Margin="20,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="DimplomStandart.Windows.DataReference.GroupWindows.AddEditThisGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DimplomStandart.Windows.DataReference.GroupWindows"
+        mc:Ignorable="d"
+        Title="Добавить/изменить группу" Height="750" Width="900">
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="0,30,0,0" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <Label Content="Учебная группа"/>
+                    <TextBox x:Name="tbStudyGroup" Text="{Binding Name}"/>
+
+                    <Label Content="Специальность"/>
+                    <ComboBox x:Name="cmbSpecialisation" SelectionChanged="cmbSpecialisation_SelectionChanged" Text="{Binding SpecialisationStrShort}" />
+
+                    <Label Content="Направленность образовательной программы"/>
+                    <TextBox x:Name="tbDirection" IsReadOnly="True"/>
+
+                    <Label Content="Наименование специальности/профессии"/>
+                    <TextBox x:Name="tbNameSpec" IsReadOnly="True"/>
+
+                    <Label Content="Квалификация"/>
+                    <TextBox x:Name="tbQualification"  IsReadOnly="True"/>
+
+                    <Label Content="Нормативный срок обучения по очной форме"/>
+                    <TextBox x:Name="tbNormalSrok" IsReadOnly="True"/>
+
+                    <Label Content="Уровень подготовки"/>
+                    <ComboBox Text="{Binding LevelTraning}" x:Name="cmbLevelTraning"/>
+
+                    <Label Content="Наименование предприятия"/>
+                    <TextBox Text="{Binding NameFactory}"/>
+
+                    <Label Content="Дата решения ГЭК"/>
+                    <DatePicker SelectedDate="{Binding DateResultGek}"/>
+
+                    <Label Content="Дата выдачи документов"/>
+                    <DatePicker SelectedDate="{Binding DateIssueDocument}"/>
+
+                   
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="20,0,0,0">
+
+                    <Label Content="Председатель ГЭК"/>
+                    <TextBox x:Name="tbPresidentGek" Text="{Binding PresidentGek}"/>
+                    
+                    <Label Content="Секретарь"/>
+                    <TextBox x:Name="tbSecretary" IsReadOnly="True"/>
+
+                    <Label Content="Форма обучения"/>
+                    <ComboBox x:Name="cmbFormStudy" Text="{Binding FormStudy}"/>
+
+                    <Label Content="Протокол ГЭК"/>
+                    <TextBox Text="{Binding ProtocolGek}"/>
+
+                    <Label Content="Прказ об отчислении выпускников №"/>
+                    <TextBox Text="{Binding OrderDropStudent}"/>
+                    
+                    <Label Content="Дата приказа об отчислении выпускников"/>
+                    <DatePicker SelectedDate="{Binding OrderDropStudentDate}"/>
+
+                    <Label Content="Дополнительные сведения"/>
+                    <TextBox Text="{Binding MoreInfo}" TextWrapping="Wrap" Height="100"/>
+
+                    <Label Content="Примечение"/>
+                    <TextBox Text="{Binding Note}"/>
+
+                    <CheckBox Content="Выгружать в ФРДО" IsChecked="{Binding IsLoadToFrdo}" Margin="0,20,0,0"/>
+                    
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" 
+                         Orientation="Horizontal" Margin="0,20,0,0">
+                <Button Content="Сохранить" Margin="0,0,20,0" x:Name="btnSave" Click="btnSave_Click"/>
+                <Button Content="Закрыть" x:Name="btnCancel" Click="btnCancel_Click"/>
+
+            </StackPanel> 
+        </StackPanel>
+        
+
+    </Grid>
+</Window>

@@ -1,0 +1,81 @@
+﻿<Window x:Class="DimplomStandart.Windows.DataReference.StudentWindows.Student"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DimplomStandart.Windows.DataReference.StudentWindows"
+        mc:Ignorable="d"
+        Title="Студенты" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Grid" BasedOn="{StaticResource GridStyle}"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+
+                <Button Width="32" Height="32" x:Name="btnAdd" ToolTip="Добавить" Click="btnAdd_Click">
+                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\plus.png"/>
+                </Button>
+                <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEdit" ToolTip="Редактировать" Click="btnEdit_Click">
+                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
+
+                </Button>
+                <Button Width="32" Height="32" x:Name="btnRemove" ToolTip="Удалить" Click="btnRemove_Click">
+                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
+                </Button>
+                <Label Content="Поиск" Margin="10,0,0,0"/>
+                <TextBox Width="200" x:Name="tbSearch"/>
+                <Button Width="32" Height="32" x:Name="btnFind" ToolTip="Найти" Click="btnFind_Click">
+                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\magnifer.png"/>
+                </Button>
+                <Button Width="32" Height="32" x:Name="btnClear" ToolTip="Очистить" Margin="10,0,0,0" Click="btnClear_Click">
+                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\sweeping.png"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel>
+                <DataGrid AutoGenerateColumns="False" x:Name="dgStudent" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding SurnameIm}"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding NameIm}"/>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding LastNameIm}"/>
+                        <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"/>
+                        <DataGridTextColumn Header="Группа" Binding="{Binding GroupStr}"/>
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateBorn, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                        <DataGridTextColumn Header="Место рождения" Binding="{Binding PlaceBorn}"/>
+                        <DataGridTextColumn Header="СНИЛС" Binding="{Binding Snils}"/>
+                        <DataGridTextColumn Header="Гражданство получателя(код)" Binding="{Binding CodeCountryStr}"/>
+                        <DataGridTextColumn Header="Регистрационный номер" Binding="{Binding RegNumberIssueDocument}"/>
+                        <DataGridTextColumn Header="Серия, номер бланка" Binding="{Binding SerialNumberIssueDocument}"/>
+                        <DataGridTextColumn Header="Серии, номера бланков приложений" Binding="{Binding SerialNumberIssueApplication}"/>
+                        <DataGridTextColumn Header="Фамилия в дательном падеже" Binding="{Binding SurnameDa}"/>
+                        <DataGridTextColumn Header="Имя в дательном падеже" Binding="{Binding NameDa}"/>
+                        <DataGridTextColumn Header="Отчество в дательном падеже" Binding="{Binding LastNameDa}"/>
+                        <DataGridTextColumn Header="Документ об образовании" Binding="{Binding ViewDocument}"/>
+                        <DataGridTextColumn Header="Год оканчания" Binding="{Binding YearEndSchool}"/>
+                        <DataGridTextColumn Header="Серия" Binding="{Binding SeriesPastDocumentEducation}"/>
+                        <DataGridTextColumn Header="Номер" Binding="{Binding NumberPastDocumentEducation}"/>
+                        <DataGridTextColumn Header="Наименование страны(в предыдущем документе)" Binding="{Binding CountryPastDocument}"/>
+                        <DataGridTextColumn Header="Год поступления" Binding="{Binding YearStart }"/>
+                        <DataGridTextColumn Header="Год завершения" Binding="{Binding YearEnd}"/>
+                        <DataGridTextColumn Header="Источник финансирования обучения" Binding="{Binding SourceFunding}"/>
+
+                        <DataGridTextColumn Header="Номер договора о ЦО" Binding="{Binding ContractCo }"/>
+                        <DataGridTextColumn Header="Дата заключения договора о ЦО" Binding="{Binding DateContractCo, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                        <DataGridTextColumn Header="Наименование организации(договор о ЦО)" Binding="{Binding NameOrganisationEmployer }"/>
+                        <DataGridTextColumn Header="ОГРН организации(договор о ЦО)" Binding="{Binding OgrnEmployer }"/>
+                        <DataGridTextColumn Header="КПП организации(договор о ЦО)" Binding="{Binding KppEmployer }"/>
+                        <DataGridTextColumn Header="Субъект РФ(договор о ЦО)" Binding="{Binding OgrnEmployer }"/>
+                        <DataGridTextColumn Header="ОГРН организации(договор о ЦО)" Binding="{Binding OgrnEmployer }"/>
+
+                        <DataGridTextColumn Header="Дополнительная информация" Binding="{Binding MoreInfo}"/>
+                        <DataGridTextColumn Header="Примечание" Binding="{Binding Note}"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
