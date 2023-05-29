@@ -80,10 +80,10 @@
                         <DataGrid x:Name="dgDiscipline" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgDiscipline_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Дисциплина" Binding="{ Binding IdDisciplineStr}"/>
-                                <DataGridTextColumn Header="Дополнительный текст" Binding="{Binding MoreInfo}"/>
                                 <DataGridTextColumn Header="Итоговая оценка" Binding="{Binding Score}"/>
                                 <DataGridTextColumn Header="Колличество часов" Binding="{Binding CountHour}"/>
                                 <DataGridTextColumn Header="Курсовая работа" Binding="{Binding IsCourseWork}"/>
+                                <DataGridTextColumn Header="Дополнительный текст" Binding="{Binding MoreInfo}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

@@ -38,8 +38,8 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
             for (int i = 0; i < tableType.Rows.Count; i++)
                 cmbGroup.Items.Add(tableType.Rows[i][0]);
 
-            if (disciplineEntities.Id != "")
-              idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline== disciplineEntities.Id select q.Id).ToList().Single();
+           // if (disciplineEntities.Id != "")
+             // idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline== disciplineEntities.Id select q.Id).ToList().Single();
 
             DisciplineEntities = disciplineEntities;
             DataContext = DisciplineEntities;
@@ -63,7 +63,7 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
 
                 command.ExecuteNonQuery();
 
-                App.disciplines.Add(DisciplineEntities);
+               
                 List<String> bufferStudentsId = new List<String>();
 
                 for (int i = 0; i < App.students.Count; i++)

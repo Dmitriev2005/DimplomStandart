@@ -10,7 +10,8 @@ namespace DimplomStandart.Entities
     public class ItogDisciplineEntities
     {
         public ItogDisciplineEntities(string id = "", string idDiscipline = "", string countHour = "",
-            string score = "", string idStudent = "", string moreInfo = "")
+            string score = "", string idStudent = "", string moreInfo = "", string typeOfActivity = "", string useMethodsEducation = "", string placePassage = "", 
+            bool isCourse = false)
         {
             Id = id;
             IdDiscipline = idDiscipline;
@@ -18,6 +19,10 @@ namespace DimplomStandart.Entities
             CountHour = countHour;
             Score = score;
             MoreInfo = moreInfo;
+            TypeOfActivity = typeOfActivity;
+            UseMethodsEducation = useMethodsEducation;
+            PlacePassage = placePassage;
+            IsCourseWork = isCourse;
         }
 
         public string Id { get; set; }
@@ -25,6 +30,10 @@ namespace DimplomStandart.Entities
         public string IdStudent { get; set; }
         public string Score { get; set; }
         public string MoreInfo { get; set; }
+        public string TypeOfActivity { get; set; }
+        public string UseMethodsEducation { get; set; }
+        public string PlacePassage { get; set; }
+        public bool IsCourseWork { get; set; }
         ////////////////////  ///////////////
         public string IdDisciplineStr {
             get

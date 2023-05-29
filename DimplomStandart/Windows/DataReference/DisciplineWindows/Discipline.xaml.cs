@@ -71,7 +71,9 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             DisciplineEntities discipline = dgDiscipline.SelectedItem as DisciplineEntities;
-            NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM public.discipline where id={discipline.Id}",App.Connection());
+            NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM public.student_discipline where id_discipline={discipline.Id}",App.Connection());
+            command.ExecuteNonQuery();
+            command = new NpgsqlCommand($"DELETE FROM public.discipline where id={discipline.Id}",App.Connection());
             command.ExecuteNonQuery();
 
             App.disciplines.Remove(discipline);

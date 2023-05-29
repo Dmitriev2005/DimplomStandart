@@ -70,7 +70,7 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
                 command.Parameters.AddWithValue("@Secretary", int.Parse(GroupEntities.Secretary));
                 command.Parameters.AddWithValue("@FormStudy", GroupEntities.FormStudy);
                 command.Parameters.AddWithValue("@ProtocolGek", long.Parse(GroupEntities.ProtocolGek));
-                command.Parameters.AddWithValue("@OrderDropStudent", long.Parse(GroupEntities.OrderDropStudent));
+                command.Parameters.AddWithValue("@OrderDropStudent", GroupEntities.OrderDropStudent);
                 command.Parameters.AddWithValue("@OrderDropStudentDate", GroupEntities.OrderDropStudentDate);
                 command.Parameters.AddWithValue("@MoreInfo", GroupEntities.MoreInfo);
                 command.Parameters.AddWithValue("@Note", GroupEntities.Note);
@@ -104,7 +104,7 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
                 command.Parameters.AddWithValue("@Secretary", int.Parse(GroupEntities.Secretary));
                 command.Parameters.AddWithValue("@FormStudy", NpgsqlDbType.Text, GroupEntities.FormStudy.ToString());
                 command.Parameters.AddWithValue("@ProtocolGek", long.Parse(GroupEntities.ProtocolGek));
-                command.Parameters.AddWithValue("@OrderDropStudent", long.Parse(GroupEntities.OrderDropStudent));
+                command.Parameters.AddWithValue("@OrderDropStudent", GroupEntities.OrderDropStudent);
                 command.Parameters.AddWithValue("@OrderDropStudentDate", GroupEntities.OrderDropStudentDate);
                 command.Parameters.AddWithValue("@MoreInfo", GroupEntities.MoreInfo);
                 command.Parameters.AddWithValue("@Note", GroupEntities.Note);

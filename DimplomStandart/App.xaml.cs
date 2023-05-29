@@ -178,9 +178,10 @@ namespace DimplomStandart
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 ItogDisciplineEntities itogDisciplineEntities = new ItogDisciplineEntities(
-                id:table.Rows[i]["id"].ToString(), idStudent: table.Rows[i]["id_student"].ToString(), idDiscipline:table.Rows[i]["id_discipline"].ToString(),
+                id: table.Rows[i]["id"].ToString(), idStudent: table.Rows[i]["id_student"].ToString(), idDiscipline: table.Rows[i]["id_discipline"].ToString(),
                  score: table.Rows[i]["score"].ToString(),
-                moreInfo: table.Rows[i]["more_info"].ToString()
+                moreInfo: table.Rows[i]["more_info"].ToString(), typeOfActivity: table.Rows[i]["type_of_activity"].ToString(), useMethodsEducation: table.Rows[i]["use_methods_education"].ToString(),
+                placePassage: table.Rows[i]["place_passage"].ToString(), isCourse: table.Rows[i]["is_course_work"].ToString()!=""?true:false
                 );
                 App.itogDisciplines.Add(itogDisciplineEntities);
             }

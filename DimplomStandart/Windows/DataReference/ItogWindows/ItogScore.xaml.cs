@@ -64,11 +64,14 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
             if (check)
             {
                 StudentEntities = dgStudent.SelectedItem as StudentEntities;
-                dgDiscipline.ItemsSource = null;
-               /* dgDiscipline.ItemsSource = (from q in App.itogDisciplines
-                                            where q.IdStudent == StudentEntities.Id && q.IdGroup == StudentEntities.Group
+                GroupEntities studentGroup = (from q in App.groups where StudentEntities.Group==q.Id select q).ToList().Single();
+
+                //string idGroup = (from q in App.disciplines where q.Id == studentGroup.Specialisation select q.).ToList().Single();
+               dgDiscipline.ItemsSource = null;
+               dgDiscipline.ItemsSource = (from q in App.itogDisciplines
+                                            where q.IdStudent == StudentEntities.Id
                                             && q.Type != "Учебная практика" && q.Type != "Производственная практика"
-                                            select q).ToList();*/
+                                            select q).ToList();
 
             }
         }
