@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using DimplomStandart.Classes;
 using DimplomStandart.Entities;
 using Npgsql;
 
@@ -52,7 +53,10 @@ namespace DimplomStandart.Windows.DataReference.SpecialisationWindows
                 NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.specialisation(name_short, name_long, is_profession, normal_period_study, qualification,direction) values(\'{Specialisation.NameShort}\'," +
                     $"\'{Specialisation.NameLong}\',{Specialisation.IsProfession},\'{Specialisation.NormalPeriodStudy}\', \'{Specialisation.Qualification}\',\'{Specialisation.Direction}\')", App.Connection());
                 command.ExecuteNonQuery();
-                Specialisation.Id = (Convert.ToInt32(App.specialisations.Max(p => p.Id))+1).ToString();
+
+                DataTableCreator dataTableCreator = new DataTableCreator();
+
+                Specialisation.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.specialisation").Rows[0][0].ToString();
                 App.specialisations.Add(Specialisation);
 
                 Close();

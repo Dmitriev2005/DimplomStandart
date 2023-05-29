@@ -65,7 +65,7 @@ namespace DimplomStandart
             {
                 DisciplineEntities disciplineEntities = new DisciplineEntities(id:table.Rows[i]["id"].ToString(), 
                     name:table.Rows[i]["name"].ToString(), type:table.Rows[i]["type"].ToString(),
-                    idGroup: table.Rows[i]["id_group"].ToString(), countHour: table.Rows[i]["count_hour"].ToString());
+                    idSpecialisation: table.Rows[i]["id_specialisation"].ToString(), countHour: table.Rows[i]["count_hour"].ToString());
                 App.disciplines.Add(disciplineEntities);
             }
         }
@@ -180,7 +180,7 @@ namespace DimplomStandart
                 ItogDisciplineEntities itogDisciplineEntities = new ItogDisciplineEntities(
                 id:table.Rows[i]["id"].ToString(), idStudent: table.Rows[i]["id_student"].ToString(), idDiscipline:table.Rows[i]["id_discipline"].ToString(),
                  score: table.Rows[i]["score"].ToString(),
-                moreInfo: table.Rows[i]["more_info"].ToString(),idGroup: table.Rows[i]["id_group"].ToString()
+                moreInfo: table.Rows[i]["more_info"].ToString()
                 );
                 App.itogDisciplines.Add(itogDisciplineEntities);
             }

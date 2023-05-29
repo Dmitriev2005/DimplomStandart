@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DimplomStandart.Classes;
 using DimplomStandart.Entities;
 using Npgsql;
 
@@ -52,7 +53,10 @@ namespace DimplomStandart.Windows.DataReference.SecretaryWindows
             {
                 NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.secretary(name,specialisation) values(\'{secretaryEntities.Name}\',\'{secretaryEntities.Specialisation}\')", App.Connection()); 
                 command.ExecuteNonQuery();
-                secretaryEntities.Id = (int.Parse(App.secretaries.Max(p => p.Id)+1)).ToString();
+
+                DataTableCreator dataTableCreator = new DataTableCreator();
+
+                secretaryEntities.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.secretary").Rows[0][0].ToString();
                 App.secretaries.Add(secretaryEntities);
 
                 Close();

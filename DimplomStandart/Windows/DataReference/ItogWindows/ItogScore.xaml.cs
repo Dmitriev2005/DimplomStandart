@@ -65,10 +65,10 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
             {
                 StudentEntities = dgStudent.SelectedItem as StudentEntities;
                 dgDiscipline.ItemsSource = null;
-                dgDiscipline.ItemsSource = (from q in App.itogDisciplines
+               /* dgDiscipline.ItemsSource = (from q in App.itogDisciplines
                                             where q.IdStudent == StudentEntities.Id && q.IdGroup == StudentEntities.Group
                                             && q.Type != "Учебная практика" && q.Type != "Производственная практика"
-                                            select q).ToList();
+                                            select q).ToList();*/
 
             }
         }

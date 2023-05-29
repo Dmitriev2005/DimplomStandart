@@ -284,8 +284,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
 
 
                 DataTableCreator dataTableCreator = new DataTableCreator();
-                var tabId = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.student");
-                Student.Id = (int.Parse(tabId.Rows[0][0].ToString()) + 1).ToString();
+                Student.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.student").Rows[0][0].ToString();
 
                 App.students.Add(Student);
                 Close();

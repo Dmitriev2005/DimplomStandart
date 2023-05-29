@@ -34,12 +34,12 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
             for (int i = 0; i < tableType.Rows.Count; i++)
                 cmbType.Items.Add(tableType.Rows[i][0]);
 
-            tableType = dataTableCreator.GiveMeDataTable("select name from public.group");
+            tableType = dataTableCreator.GiveMeDataTable("select name_short from public.specialisation");
             for (int i = 0; i < tableType.Rows.Count; i++)
                 cmbGroup.Items.Add(tableType.Rows[i][0]);
 
             if (disciplineEntities.Id != "")
-                idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline==DisciplineEntities.Id select q.Id).ToList().Single();
+              idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline== disciplineEntities.Id select q.Id).ToList().Single();
 
             DisciplineEntities = disciplineEntities;
             DataContext = DisciplineEntities;
@@ -54,31 +54,37 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
             {
                 //Если Id не пуст, тогда обновляю запись
                 NpgsqlCommand command = new NpgsqlCommand($"UPDATE public.discipline SET name = @Name, type = @Type::enum_type_discipline, " +
-                    $"id_group = @IdGroup::bigint, count_hour = @CountHour::bigint where id = @Id::bigint", App.Connection());
+                    $"id_specialisation = @IdSpecialisation::bigint, count_hour = @CountHour::bigint where id = @Id::bigint", App.Connection());
                 command.Parameters.AddWithValue("@Id", DisciplineEntities.Id);
                 command.Parameters.AddWithValue("@Name", DisciplineEntities.Name);
                 command.Parameters.AddWithValue("@Type", DisciplineEntities.Type);
-                command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdGroup);
+                command.Parameters.AddWithValue("@IdSpecialisation", DisciplineEntities.IdSpecialisation);
                 command.Parameters.AddWithValue("@CountHour", DisciplineEntities.CountHour);
 
                 command.ExecuteNonQuery();
 
+                App.disciplines.Add(DisciplineEntities);
+                List<String> bufferStudentsId = new List<String>();
+
                 for (int i = 0; i < App.students.Count; i++)
                 {
-                    string idStudent = App.students[i].Group == DisciplineEntities.IdGroup ? App.students[i].Id : "";
-
-                    if (idStudent != "")
-                    {
-                        command = new NpgsqlCommand($"UPDATE public.student_discipline SET id_student = @IdStudent::bigserial, id_discipline = @IdDiscipline::bigserial, " +
-                            $"id_group = @IdGroup::bigint where id = @Id::bigint", App.Connection());
-                        command.Parameters.AddWithValue("@Id", idStudentDiscipline);
-                        command.Parameters.AddWithValue("@IdDiscipline", DisciplineEntities.Id);
-                        command.Parameters.AddWithValue("@IdStudent", idStudent);
-                        command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdGroup);
-
-                        command.ExecuteNonQuery();
-                    }
+                    string idGroup = App.groups[i].Specialisation == DisciplineEntities.IdSpecialisation ? App.groups[i].Id : "";
+                    if (idGroup != "")
+                        foreach (var item in App.students)
+                            if (!bufferStudentsId.Contains(item.Id) && item.Group == idGroup)
+                                bufferStudentsId.Add(item.Id);
                 }
+
+                foreach (var idStudent in bufferStudentsId)
+                {
+                    command = new NpgsqlCommand("UPDATE public.student_discipline SET id_student = @IdStudent::bigint, id_discipline = @IdDiscipline::bigint", App.Connection());
+                    command.Parameters.AddWithValue("@IdDiscipline", DisciplineEntities.Id);
+                    command.Parameters.AddWithValue("@IdStudent", idStudent);
+
+                    command.ExecuteNonQuery();
+
+                }
+
 
                 int index = App.disciplines.FindIndex(i => i.Id== DisciplineEntities.Id);
                 App.disciplines[index] = DisciplineEntities;
@@ -89,36 +95,39 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
             else
             {
                 //Если Id пуст, тогда вставляю запись
-                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.discipline(name,type,id_group,count_hour) values(@Name,@Type::enum_type_discipline," +
-                    $"@IdGroup::bigint,@CountHour::bigint)",App.Connection());
+                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.discipline(name,type,id_specialisation,count_hour) values(@Name,@Type::enum_type_discipline," +
+                    $"@IdSpecialisation::bigint,@CountHour::bigint)",App.Connection());
                 command.Parameters.AddWithValue("@Name", DisciplineEntities.Name);
                 command.Parameters.AddWithValue("@Type", DisciplineEntities.Type);
-                command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdGroup);
+                command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdSpecialisation);
+                command.Parameters.AddWithValue("@IdSpecialisation", DisciplineEntities.IdSpecialisation);
                 command.Parameters.AddWithValue("@CountHour", DisciplineEntities.CountHour);
 
                 command.ExecuteNonQuery();
 
                 DataTableCreator dataTableCreator = new DataTableCreator();
-                var tabId = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.discipline");
-                DisciplineEntities.Id = (int.Parse(tabId.Rows[0][0].ToString()) + 1).ToString();
+                DisciplineEntities.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.discipline").Rows[0][0].ToString();
+                App.disciplines.Add(DisciplineEntities);
+                List<String> bufferStudentsId = new List<String>();
 
                 for (int i = 0; i < App.students.Count; i++)
                 {
-                    string idStudent = App.students[i].Group == DisciplineEntities.IdGroup ? App.students[i].Id : "";
-                    if (idStudent != "")
-                    {
-                        command = new NpgsqlCommand("INSERT INTO public.student_discipline(id_student, id_group, id_discipline)values(" +
-                            "@IdStudent::bigint,@IdGroup::bigint,@IdDiscipline::bigint)", App.Connection());
-                        command.Parameters.AddWithValue("@IdDiscipline", DisciplineEntities.Id);
-                        command.Parameters.AddWithValue("@IdStudent", idStudent);
-                        command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdGroup);
+                    string idGroup = App.groups[i].Specialisation == DisciplineEntities.IdSpecialisation ? App.groups[i].Id : "";
+                    if (idGroup!="")
+                        foreach (var item in App.students)
+                            if(!bufferStudentsId.Contains(item.Id)&&item.Group==idGroup)
+                                bufferStudentsId.Add(item.Id);
+                }
+                foreach (var idStudent in bufferStudentsId)
+                {
+                    command = new NpgsqlCommand("INSERT INTO public.student_discipline(id_student, id_discipline)values(" +
+                        "@IdStudent::bigint,@IdDiscipline::bigint)", App.Connection());
+                    command.Parameters.AddWithValue("@IdDiscipline", DisciplineEntities.Id);
+                    command.Parameters.AddWithValue("@IdStudent", idStudent);
 
-                        command.ExecuteNonQuery();
-
-                    }
+                    command.ExecuteNonQuery();
 
                 }
-
 
                 App.LoadItogDisciplines();
                 Close();

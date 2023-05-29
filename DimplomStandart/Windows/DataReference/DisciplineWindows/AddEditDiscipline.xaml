@@ -14,8 +14,8 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
                 <Label Content="Наименование"/>
                 <TextBox Text="{Binding Name}"/>
-                <Label Content="Группа"/>
-                <ComboBox x:Name="cmbGroup" Text="{Binding IdGroupStr}"/>
+                <Label Content="Специальность"/>
+                <ComboBox x:Name="cmbGroup" Text="{Binding SpecialisationStr}"/>
                 <Label Content="Тип" Margin="0,20,0,0"/>
                 <ComboBox x:Name="cmbType" Text="{Binding Type}"/>
                 <Label Content="Колличество часов" Margin="0,20,0,0"/>

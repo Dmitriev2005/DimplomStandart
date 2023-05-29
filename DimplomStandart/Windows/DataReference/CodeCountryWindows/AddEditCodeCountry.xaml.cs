@@ -61,8 +61,7 @@ namespace DimplomStandart.Windows.DataReference.CodeCountryWindows
                 npgsqlCommand.ExecuteNonQuery();
 
                 DataTableCreator dataTableCreator = new DataTableCreator();
-                var tabId = dataTableCreator.GiveMeDataTable("SELECT id from public.code_country MAX(id)");
-                CodeCountry.Id = (int.Parse(tabId.Rows[0][0].ToString())+1).ToString(); 
+                CodeCountry.Id = dataTableCreator.GiveMeDataTable("SELECT id from public.code_country MAX(id)").Rows[0][0].ToString();
                 App.codeCountrys.Add(CodeCountry);
                 Close();
 

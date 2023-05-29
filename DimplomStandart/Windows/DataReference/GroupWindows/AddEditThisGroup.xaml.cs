@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DimplomStandart.Classes;
 using DimplomStandart.Entities;
+using DimplomStandart.Windows.DataReference.SecretaryWindows;
 using Npgsql;
 using NpgsqlTypes;
 
@@ -110,7 +111,8 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
                 command.Parameters.AddWithValue("@IsLoadToFrdo", GroupEntities.IsLoadToFrdo);
 
                 command.ExecuteNonQuery();
-                GroupEntities.Id = (int.Parse(App.groups.Max(q=> q.Id))+1).ToString();
+                DataTableCreator dataTableCreator = new DataTableCreator();
+                GroupEntities.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.group").Rows[0][0].ToString();
                 App.groups.Add(GroupEntities);
 
                 Close();
