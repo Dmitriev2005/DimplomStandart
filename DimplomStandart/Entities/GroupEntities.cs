@@ -122,6 +122,17 @@ namespace DimplomStandart.Entities
             }
             set { } 
         }
+        public string SpecialisationYear
+        {
+            get
+            {
+                if (Id != "")
+                    return (from q in App.specialisations where q.Id == Specialisation select q.SpecialisationYear).ToList().Single();
+                else
+                    return "";
 
+            }
+            set { }
+        }
     }
 }

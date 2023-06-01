@@ -28,7 +28,7 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
         public AddEditThisGroup(GroupEntities groupEntities)
         {
             InitializeComponent();
-            this.GroupEntities = groupEntities;
+            GroupEntities = groupEntities;
 
             foreach (var item in App.specialisations)
                 cmbSpecialisation.Items.Add(item.SpecialisationYear);

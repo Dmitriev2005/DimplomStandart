@@ -25,40 +25,37 @@ namespace DimplomStandart.Windows.DataReference.SecretaryWindows
         public AddSecretary(SecretaryEntities secretaryEntities)
         {
             InitializeComponent();
-            cmbSpecialisation.ItemsSource = (from q in App.specialisations select q.NameLong).ToList();
-            this.secretaryEntities = secretaryEntities;
-            if(secretaryEntities.Id != "")
-            {
-                tbName.Text = secretaryEntities.Name;
-                cmbSpecialisation.SelectedItem = secretaryEntities.SpecialisationStr;
-            }
+            cmbSpecialisation.ItemsSource = (from q in App.specialisations select q.SpecialisationYear).ToList();
+            SecretaryEntities = secretaryEntities;
+
+            DataContext = SecretaryEntities;
         }
-        SecretaryEntities secretaryEntities;
+        SecretaryEntities SecretaryEntities { get; set; }
         
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            secretaryEntities.Name = tbName.Text;
-            secretaryEntities.SpecialisationStr = cmbSpecialisation.SelectedItem.ToString();
-
-            if(secretaryEntities.Id != "")
+           // SecretaryEntities.Specialisation = (from q in App.spe where q).ToList().Single();
+            if(SecretaryEntities.Id != "")
             {
-                NpgsqlCommand command = new NpgsqlCommand($"UPDATE public.secretary SET name = \'{secretaryEntities.Name}\', specialisation = \'{secretaryEntities.Specialisation}\' where id={secretaryEntities.Id}", App.Connection());
+                NpgsqlCommand command = new NpgsqlCommand("UPDATE public.secretary SET name = @Name, specialisation = @Specialisation::bigint WHERE id = @Id::bigint", App.Connection());
+                command.Parameters.AddWithValue("@Name", SecretaryEntities.Name);
+                command.Parameters.AddWithValue("@Specialisation", SecretaryEntities.Specialisation);
+                command.Parameters.AddWithValue("@Id", SecretaryEntities.Id);
                 command.ExecuteNonQuery();
 
-                int index = App.secretaries.FindIndex(x => x.Id == secretaryEntities.Id);
-                App.secretaries[index] = secretaryEntities;
+                int index = App.secretaries.FindIndex(q => q.Id == SecretaryEntities.Id);
+                App.secretaries[index] = SecretaryEntities;
                 Close();
             }
             else
             {
-                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.secretary(name,specialisation) values(\'{secretaryEntities.Name}\',\'{secretaryEntities.Specialisation}\')", App.Connection()); 
+                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.secretary(name,specialisation) values(@Name,@Specialisation::bigint)", App.Connection());
+                command.Parameters.AddWithValue("@Name", SecretaryEntities.Name);
+                command.Parameters.AddWithValue("@Specialisation", SecretaryEntities.Specialisation);
+
                 command.ExecuteNonQuery();
 
-                DataTableCreator dataTableCreator = new DataTableCreator();
-
-                secretaryEntities.Id = dataTableCreator.GiveMeDataTable("SELECT MAX(id) FROM public.secretary").Rows[0][0].ToString();
-                App.secretaries.Add(secretaryEntities);
-
+                App.Refresh();
                 Close();
 
 

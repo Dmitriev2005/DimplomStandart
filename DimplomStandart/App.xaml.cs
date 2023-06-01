@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
@@ -24,15 +25,7 @@ namespace DimplomStandart
     {
         public App()
         {
-
-            LoadItogDisciplines();
-            LoadCodeCountrys();
-            LoadStudents();
-            LoadOrganisation();
-            LoadGroups();
-            LoadSecretaries();
-            LoadSpecialisations();
-            LoadDisciplines();
+            Refresh();
         }
         public static List<DisciplineEntities> disciplines = new List<DisciplineEntities>();
         public static List<SpecialisationEntities> specialisations = new List<SpecialisationEntities>();
@@ -55,7 +48,7 @@ namespace DimplomStandart
             return connection;
            
         } 
-        private void LoadDisciplines()
+        private static void LoadDisciplines()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.discipline");
@@ -69,7 +62,7 @@ namespace DimplomStandart
                 App.disciplines.Add(disciplineEntities);
             }
         }
-        private void LoadSpecialisations()
+        private static void LoadSpecialisations()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.specialisation");
@@ -82,7 +75,7 @@ namespace DimplomStandart
                 App.specialisations.Add(specialisationEntities);
             }
         }
-        private void LoadSecretaries() {
+        private static void LoadSecretaries() {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.secretary");
 
@@ -92,7 +85,7 @@ namespace DimplomStandart
                 App.secretaries.Add(secretaryEntities);
             }
         }
-        private void LoadGroups()
+        private static void LoadGroups()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.group");
@@ -107,7 +100,7 @@ namespace DimplomStandart
                 App.groups.Add(groupEntities);
             }
         }
-        private void LoadOrganisation()
+        private static void LoadOrganisation()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.organisation");
@@ -118,7 +111,7 @@ namespace DimplomStandart
                     pastName: table.Rows[0]["past_name"].ToString(), region: table.Rows[0]["region"].ToString(), director: table.Rows[0]["director"].ToString(),
                     ogrn: table.Rows[0]["ogrn"].ToString(), kpp: table.Rows[0]["kpp"].ToString(), rightAct: table.Rows[0]["right_act"].ToString());
         }
-        private void LoadStudents()
+        private static void LoadStudents()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.student");
@@ -158,7 +151,7 @@ namespace DimplomStandart
             }
 
         }
-        private void LoadCodeCountrys()
+        private static void LoadCodeCountrys()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.code_country");
@@ -170,7 +163,7 @@ namespace DimplomStandart
                 App.codeCountrys.Add(codeCountryEntities);
             }
         }
-        public static void LoadItogDisciplines()
+        private static void LoadItogDisciplines()
         {
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.student_discipline");
@@ -187,7 +180,19 @@ namespace DimplomStandart
             }
 
         }
-        
+        public static void Refresh()
+        {
+            LoadItogDisciplines();
+            LoadCodeCountrys();
+            LoadStudents();
+            LoadOrganisation();
+            LoadGroups();
+            LoadSecretaries();
+            LoadSpecialisations();
+            LoadDisciplines();
+
+        }
+
 
     }
 }

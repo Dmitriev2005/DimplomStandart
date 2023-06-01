@@ -50,7 +50,7 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
 
             command.ExecuteNonQuery();
 
-            App.LoadItogDisciplines();
+            App.Refresh();
             Close();
         }
 

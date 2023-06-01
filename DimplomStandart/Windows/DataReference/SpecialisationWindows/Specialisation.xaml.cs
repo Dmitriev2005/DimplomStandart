@@ -63,10 +63,34 @@ namespace DimplomStandart.Windows.DataReference.SpecialisationWindows
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             SpecialisationEntities specialisation = dgSpecialisation.SelectedItem as SpecialisationEntities;
-            NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM public.specialisation where id={specialisation.Id}", App.Connection());
+
+            string idDiscipline = (from q in App.disciplines where q.IdSpecialisation==specialisation.Id select q.Id).ToList().Single();
+            string idGroup = (from q in App.groups where q.Specialisation==specialisation.Id select q.Id).ToList().Single();
+            string idStudent = (from q in App.students where q.Group==idGroup select q.Id).ToList().Single();
+
+            NpgsqlCommand command = new NpgsqlCommand("DELETE FROM public.specialisation_discipline WHERE id_discipline = @Id", App.Connection());
+            command.Parameters.AddWithValue("@Id", idDiscipline);
             command.ExecuteNonQuery();
 
-            App.specialisations.Remove(specialisation);
+            command = new NpgsqlCommand("DELETE FROM public.discipline WHERE id = @Id", App.Connection());
+            command.Parameters.AddWithValue("@Id", idDiscipline);
+            command.ExecuteNonQuery();
+
+            command = new NpgsqlCommand("DELETE FROM public.student WHERE id = @Id", App.Connection());
+            command.Parameters.AddWithValue("@Id", idStudent);
+            command.ExecuteNonQuery();
+
+
+            command = new NpgsqlCommand("DELETE FROM public.group WHERE id = @Id",App.Connection());
+            command.Parameters.AddWithValue("@Id", idGroup);
+            command.ExecuteNonQuery();
+
+            command = new NpgsqlCommand($"DELETE FROM public.specialisation WHERE id = @Id", App.Connection());
+            command.Parameters.AddWithValue("@Id", specialisation.Id);
+            command.ExecuteNonQuery();
+
+            App.Refresh();
+
             dgSpecialisation.ItemsSource = null;
             dgSpecialisation.ItemsSource = App.specialisations;
         }

@@ -19,20 +19,21 @@ namespace DimplomStandart.Entities
         public string Id { get; set; }
         public string Name { get; set; }
         public string Specialisation { get; set; }
-        public string SpecialisationStr { 
+        public string SpecialisationYear
+        {
             get
             {
-                return (from q in App.specialisations where 
-                        q.Id == Specialisation select q.NameLong).ToList()[0].ToString();
-               
+                if (Id != "")
+                    return (from q in App.specialisations where q.Id == Specialisation select q.SpecialisationYear).ToList().Single();
+                else
+                    return "";
+
             }
-            set 
-            {
-                Specialisation = (from q in App.specialisations where q.NameLong == value select q.Id).ToList().Single();
-            } 
+            set {
+                Specialisation = (from q in App.specialisations where q.SpecialisationYear==value select q.Id).ToList().Single();
+            }
         }
 
-        private string specialisationStr;
 
     }
 }

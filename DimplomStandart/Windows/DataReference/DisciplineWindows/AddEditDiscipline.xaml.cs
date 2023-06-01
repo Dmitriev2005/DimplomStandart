@@ -91,7 +91,7 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
                 int index = App.disciplines.FindIndex(i => i.Id== DisciplineEntities.Id);
                 App.disciplines[index] = DisciplineEntities;
 
-                App.LoadItogDisciplines();
+                App.Refresh();
                 Close(); 
             }
             else
@@ -130,7 +130,7 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
 
                 }
 
-                App.LoadItogDisciplines();
+                App.Refresh();
                 Close();
             }
         }
