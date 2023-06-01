@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DimplomStandart.Windows.DataReference.SpecialisationWindows"
         mc:Ignorable="d"
-        Title="Добавление/изменение" Height="420" Width="500">
+        Title="Добавление/изменение" Height="500" Width="500">
     <Grid>
         <StackPanel Margin="0,30,0,0">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="450">
@@ -16,6 +16,8 @@
 
                 <Label Content="Квалификация"/>
                 <TextBox x:Name="tbQualification" Text="{Binding Qualification}"/>
+                <Label Content="Год добавления"/>
+                <TextBox x:Name="tbYearSpecialisation" Text="{Binding YearSpecialisation}"/>
                 <Label Content="Нормативный срок обучения по очной форме"/>
                 <TextBox x:Name="tbNormalPeriodStudy" Text="{Binding NormalPeriodStudy}"/>
                 <Label Content="Направление"/>

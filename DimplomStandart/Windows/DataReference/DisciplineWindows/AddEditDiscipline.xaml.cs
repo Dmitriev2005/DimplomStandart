@@ -34,12 +34,12 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
             for (int i = 0; i < tableType.Rows.Count; i++)
                 cmbType.Items.Add(tableType.Rows[i][0]);
 
-            tableType = dataTableCreator.GiveMeDataTable("select name_short from public.specialisation");
+            tableType = dataTableCreator.GiveMeDataTable("select name_short, year_specialisation from public.specialisation");
             for (int i = 0; i < tableType.Rows.Count; i++)
-                cmbGroup.Items.Add(tableType.Rows[i][0]);
+                cmbGroup.Items.Add(tableType.Rows[i][0]+" "+ tableType.Rows[i][1]);
 
-           // if (disciplineEntities.Id != "")
-             // idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline== disciplineEntities.Id select q.Id).ToList().Single();
+           if (disciplineEntities.Id != "")
+             idStudentDiscipline = (from q in App.itogDisciplines where q.IdDiscipline== disciplineEntities.Id select q.Id).ToList().Single();
 
             DisciplineEntities = disciplineEntities;
             DataContext = DisciplineEntities;
@@ -66,7 +66,7 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
                
                 List<String> bufferStudentsId = new List<String>();
 
-                for (int i = 0; i < App.students.Count; i++)
+                for (int i = 0; i < App.groups.Count; i++)
                 {
                     string idGroup = App.groups[i].Specialisation == DisciplineEntities.IdSpecialisation ? App.groups[i].Id : "";
                     if (idGroup != "")
@@ -77,9 +77,11 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
 
                 foreach (var idStudent in bufferStudentsId)
                 {
-                    command = new NpgsqlCommand("UPDATE public.student_discipline SET id_student = @IdStudent::bigint, id_discipline = @IdDiscipline::bigint", App.Connection());
+                    command = new NpgsqlCommand("UPDATE public.student_discipline SET id_student = @IdStudent::bigint, id_discipline = @IdDiscipline::bigint " +
+                        "where id = @IdStudentDiscipline", App.Connection());
                     command.Parameters.AddWithValue("@IdDiscipline", DisciplineEntities.Id);
                     command.Parameters.AddWithValue("@IdStudent", idStudent);
+                    command.Parameters.AddWithValue("@IdStudentDiscipline", idStudentDiscipline);
 
                     command.ExecuteNonQuery();
 
@@ -99,7 +101,6 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
                     $"@IdSpecialisation::bigint,@CountHour::bigint)",App.Connection());
                 command.Parameters.AddWithValue("@Name", DisciplineEntities.Name);
                 command.Parameters.AddWithValue("@Type", DisciplineEntities.Type);
-                command.Parameters.AddWithValue("@IdGroup", DisciplineEntities.IdSpecialisation);
                 command.Parameters.AddWithValue("@IdSpecialisation", DisciplineEntities.IdSpecialisation);
                 command.Parameters.AddWithValue("@CountHour", DisciplineEntities.CountHour);
 
@@ -110,7 +111,7 @@ namespace DimplomStandart.Windows.DataReference.DisciplineWindows
                 App.disciplines.Add(DisciplineEntities);
                 List<String> bufferStudentsId = new List<String>();
 
-                for (int i = 0; i < App.students.Count; i++)
+                for (int i = 0; i < App.groups.Count; i++)
                 {
                     string idGroup = App.groups[i].Specialisation == DisciplineEntities.IdSpecialisation ? App.groups[i].Id : "";
                     if (idGroup!="")

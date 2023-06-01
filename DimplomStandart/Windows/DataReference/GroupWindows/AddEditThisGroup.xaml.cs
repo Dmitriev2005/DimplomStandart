@@ -31,7 +31,7 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
             this.GroupEntities = groupEntities;
 
             foreach (var item in App.specialisations)
-                cmbSpecialisation.Items.Add(item.NameShort);
+                cmbSpecialisation.Items.Add(item.SpecialisationYear);
 
              DataTableCreator dataTableCreator = new DataTableCreator();
 
@@ -130,7 +130,7 @@ namespace DimplomStandart.Windows.DataReference.GroupWindows
         {
 
             string selBuff = cmbSpecialisation.SelectedItem.ToString();
-            var tempGroup = (from q in App.specialisations where q.NameShort == selBuff select q).ToList().Single();
+            var tempGroup = (from q in App.specialisations where q.SpecialisationYear == selBuff select q).ToList().Single();
             GroupEntities.Specialisation = tempGroup.Id;
 
             tbNormalSrok.Text = tempGroup.NormalPeriodStudy;

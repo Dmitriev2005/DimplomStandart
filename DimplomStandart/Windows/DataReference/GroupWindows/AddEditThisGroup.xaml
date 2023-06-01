@@ -14,7 +14,7 @@
                     <TextBox x:Name="tbStudyGroup" Text="{Binding Name}"/>
 
                     <Label Content="Специальность"/>
-                    <ComboBox x:Name="cmbSpecialisation" SelectionChanged="cmbSpecialisation_SelectionChanged" Text="{Binding SpecialisationStrShort}" />
+                    <ComboBox x:Name="cmbSpecialisation" SelectionChanged="cmbSpecialisation_SelectionChanged" Text="{Binding SpecialisationCode}" />
 
                     <Label Content="Направленность образовательной программы"/>
                     <TextBox x:Name="tbDirection" IsReadOnly="True"/>

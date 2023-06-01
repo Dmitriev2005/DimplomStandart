@@ -34,11 +34,12 @@
             </StackPanel>
 
             <StackPanel>
-                <DataGrid AutoGenerateColumns="False" x:Name="dgSpecialisation">
+                <DataGrid AutoGenerateColumns="False" x:Name="dgSpecialisation" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Краткое наименование" Binding="{Binding NameShort}"/>
                         <DataGridTextColumn Header="Полное наименование" Binding="{Binding NameLong}"/>
                         <DataGridTextColumn Header="Квалификация" Binding="{Binding Qualification}"/>
+                        <DataGridTextColumn Header="Год добавления" Binding="{Binding YearSpecialisation}"/>
                         <DataGridTextColumn Header="Нормативный срок обучения" Binding="{Binding NormalPeriodStudy}"/>
                         <DataGridTextColumn Header="Направление" Binding="{Binding Direction}"/>
                         <DataGridTextColumn Header="Профессия" Binding="{Binding StrIsProfession}"/>

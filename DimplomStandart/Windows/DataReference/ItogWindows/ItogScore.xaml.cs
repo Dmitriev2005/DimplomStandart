@@ -34,15 +34,7 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
 
         }
         StudentEntities StudentEntities { get; set; }
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void btnFind_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -51,13 +43,19 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            EditItogScore editItogScore = new EditItogScore(dgDiscipline.SelectedItem as ItogDisciplineEntities);
+            editItogScore.ShowDialog();
 
+            Application.Current.MainWindow.Show();
+            Application.Current.MainWindow.Activate();
+
+            dgDiscipline.ItemsSource = null;
+            dgDiscipline.ItemsSource = (from q in App.itogDisciplines
+                                        where q.IdStudent == StudentEntities.Id
+                                        && q.Type != "Учебная практика" && q.Type != "Производственная практика"
+                                        select q).ToList();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void dgStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -73,24 +71,31 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
                                             && q.Type != "Учебная практика" && q.Type != "Производственная практика"
                                             select q).ToList();
 
+                dgPracticle.ItemsSource = null;
+                dgPracticle.ItemsSource = (from q in App.itogDisciplines
+                                           where q.IdStudent == StudentEntities.Id
+                                           && q.Type == "Учебная практика" || q.Type == "Производственная практика"
+                                           select q).ToList();
+
             }
         }
 
-        private void btnAddP_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnEditP_Click(object sender, RoutedEventArgs e)
         {
+            EditPracticle editItogScore = new EditPracticle(dgPracticle.SelectedItem as ItogDisciplineEntities);
+            editItogScore.ShowDialog();
+
+            Application.Current.MainWindow.Show();
+            Application.Current.MainWindow.Activate();
+
+            dgPracticle.ItemsSource = null;
+            dgPracticle.ItemsSource = (from q in App.itogDisciplines
+                                       where q.IdStudent == StudentEntities.Id
+                                       && q.Type == "Учебная практика" || q.Type == "Производственная практика"
+                                       select q).ToList();
 
         }
-
-        private void btnRemoveP_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void dgPracticle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
@@ -104,8 +109,10 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
         {
             check = false;
 
-            dgStudent.ItemsSource = null;
             dgDiscipline.ItemsSource = null;
+            dgPracticle.ItemsSource = null;
+            dgStudent.ItemsSource = null;
+
             dgStudent.ItemsSource = (from q in App.students where q.GroupStr == cmbGroup.SelectedValue.ToString() select q).ToList();
 
             check = true;

@@ -3,6 +3,7 @@ using DimplomStandart.Windows.DataReference.DisciplineWindows;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,12 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             StudentEntities selStudent = dgStudent.SelectedItem as StudentEntities;
-            NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM public.student WHERE id={selStudent.Id}", App.Connection());
+            NpgsqlCommand command = new NpgsqlCommand("DELETE FROM public.student_discipline WHERE id_student = @Id::bigint",App.Connection());
+            command.Parameters.AddWithValue("@Id", selStudent.Id);
+            command.ExecuteNonQuery();
+
+            command = new NpgsqlCommand("DELETE FROM public.student WHERE id=@Id::bigint", App.Connection());
+            command.Parameters.AddWithValue("@Id", selStudent.Id);
             command.ExecuteNonQuery();
 
             App.students.Remove(selStudent);

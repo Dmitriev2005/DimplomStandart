@@ -38,7 +38,8 @@ namespace DimplomStandart.Windows.DataReference.SpecialisationWindows
             {
                 //Если Id не пуст, тогда обновляю запись
                 NpgsqlCommand command = new NpgsqlCommand($"UPDATE public.specialisation SET name_short = \'{Specialisation.NameShort}\', name_long = \'{Specialisation.NameLong}\'," +
-                    $"is_profession={Specialisation.IsProfession.ToString()}, normal_period_study=\'{Specialisation.NormalPeriodStudy}\', qualification=\'{Specialisation.Qualification}\', direction=\'{Specialisation.Direction}\' where id={Specialisation.Id}", App.Connection());
+                    $"is_profession={Specialisation.IsProfession.ToString()}, normal_period_study=\'{Specialisation.NormalPeriodStudy}\', qualification=\'{Specialisation.Qualification}\', " +
+                    $"direction=\'{Specialisation.Direction}\', year_specialisation=\'{Specialisation.YearSpecialisation}\' where id={Specialisation.Id}", App.Connection());
                 
                 command.ExecuteNonQuery();
 
@@ -50,8 +51,8 @@ namespace DimplomStandart.Windows.DataReference.SpecialisationWindows
             else
             {
                 //Если Id пуст, тогда вставляю запись
-                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.specialisation(name_short, name_long, is_profession, normal_period_study, qualification,direction) values(\'{Specialisation.NameShort}\'," +
-                    $"\'{Specialisation.NameLong}\',{Specialisation.IsProfession},\'{Specialisation.NormalPeriodStudy}\', \'{Specialisation.Qualification}\',\'{Specialisation.Direction}\')", App.Connection());
+                NpgsqlCommand command = new NpgsqlCommand($"INSERT INTO public.specialisation(name_short, name_long, year_specialisation, is_profession, normal_period_study, qualification,direction) values(\'{Specialisation.NameShort}\'," +
+                    $"\'{Specialisation.NameLong}\',\'{Specialisation.YearSpecialisation}\',{Specialisation.IsProfession},\'{Specialisation.NormalPeriodStudy}\', \'{Specialisation.Qualification}\',\'{Specialisation.Direction}\')", App.Connection());
                 command.ExecuteNonQuery();
 
                 DataTableCreator dataTableCreator = new DataTableCreator();

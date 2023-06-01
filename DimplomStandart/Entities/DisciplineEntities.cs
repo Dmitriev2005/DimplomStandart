@@ -24,12 +24,23 @@ namespace DimplomStandart.Entities
         ////////////
         public string SpecialisationStr { get
             {
-                if ((from q in App.specialisations where q.Id == IdSpecialisation select q.NameShort).Any())
-                    return (from q in App.specialisations where q.Id == IdSpecialisation select q.NameShort).ToList().Single();
+                if (Id != "")
+                {
+                    SpecialisationEntities specialisation = (from q in App.specialisations where q.Id == IdSpecialisation select q).ToList().Single();
+                    return specialisation.NameShort + " " + specialisation.YearSpecialisation;
+
+                }
                 else
                     return "";
             }
-            set => IdSpecialisation = (from q in App.specialisations where q.NameShort == value select q.Id).ToList().Single();
+            set
+            {
+                foreach (var item in App.specialisations)
+                    if (item.NameShort == value.Remove(item.NameShort.Length)&&item.YearSpecialisation == value.Remove(0,item.NameShort.Length+1))
+                        IdSpecialisation = item.Id;
+
+            }
+
         }
        
 

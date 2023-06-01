@@ -65,15 +65,9 @@
                     
                     <StackPanel Width="600">
                         <StackPanel Orientation="Horizontal">
-                            <Button Width="32" Height="32" x:Name="btnAdd" ToolTip="Добавить" Click="btnAdd_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\plus.png"/>
-                            </Button>
                             <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEdit" ToolTip="Редактировать" Click="btnEdit_Click">
                                 <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
 
-                            </Button>
-                            <Button Width="32" Height="32" x:Name="btnRemove" ToolTip="Удалить" Click="btnRemove_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
                             </Button>
                         </StackPanel>
 
@@ -82,32 +76,27 @@
                                 <DataGridTextColumn Header="Дисциплина" Binding="{ Binding IdDisciplineStr}"/>
                                 <DataGridTextColumn Header="Итоговая оценка" Binding="{Binding Score}"/>
                                 <DataGridTextColumn Header="Колличество часов" Binding="{Binding CountHour}"/>
-                                <DataGridTextColumn Header="Курсовая работа" Binding="{Binding IsCourseWork}"/>
+                                <DataGridTextColumn Header="Курсовая работа" Binding="{Binding IsCourseWorkStr}"/>
                                 <DataGridTextColumn Header="Дополнительный текст" Binding="{Binding MoreInfo}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
                     <StackPanel Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <Button Width="32" Height="32" x:Name="btnAddP" ToolTip="Добавить" Click="btnAddP_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\plus.png"/>
-                            </Button>
                             <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEditP" ToolTip="Редактировать" Click="btnEditP_Click">
                                 <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
 
                             </Button>
-                            <Button Width="32" Height="32" x:Name="btnRemoveP" ToolTip="Удалить" Click="btnRemoveP_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
-                            </Button>
 
                         </StackPanel>
-                        <DataGrid x:Name="dgPracticle" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgPracticle_SelectionChanged">
+                        <DataGrid  x:Name="dgPracticle" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgPracticle_SelectionChanged" Width="550">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Дисциплина" Binding="{ Binding IdDisciplineStr}"/>
+                                <DataGridTextColumn Header="Название" Binding="{ Binding IdDisciplineStr}"/>
+                                <DataGridTextColumn Header="Вид практики" Binding="{ Binding Type}"/>
                                 <DataGridTextColumn Header="Дополнительный текст" Binding="{Binding MoreInfo}"/>
-                                <DataGridTextColumn Header="Итоговая оценка" Binding="{Binding Score}"/>
-                                <DataGridTextColumn Header="Колличество часов" Binding="{Binding CountHour}"/>
-                                <DataGridTextColumn Header="Курсовая работа" Binding="{Binding IsCourseWork}"/>
+                                <DataGridTextColumn Header="Вид деятельности" Binding="{Binding TypeOfActivity}"/>
+                                <DataGridTextColumn Header="Использование средств обучения" Binding="{Binding UseMethodsEducation}"/>
+                                <DataGridTextColumn Header="Место прохождения" Binding="{Binding PlacePassage}"/>
 
                             </DataGrid.Columns>
                         </DataGrid>

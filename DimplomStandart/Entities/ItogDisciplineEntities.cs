@@ -72,8 +72,26 @@ namespace DimplomStandart.Entities
             set { }
 
         }
+        public string IdStudentStr
+        {
+            get
+            {
+                if (Id != "")
+                {
+                    StudentEntities student = (from q in App.students where q.Id == IdStudent select q).ToList().Single();
+                    return student.SurnameIm + " " + student.NameIm + " " + student.LastNameIm;
+                }
+                else
+                    return "";
 
-
+            }
+            set { }
+        }
+        public string IsCourseWorkStr
+        {
+            get => IsCourseWork ? "Да" : "Нет";
+            set { }
+        }
 
     }
 }

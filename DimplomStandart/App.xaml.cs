@@ -78,7 +78,7 @@ namespace DimplomStandart
             {
                 SpecialisationEntities specialisationEntities = new SpecialisationEntities(table.Rows[i][4].ToString(),
                 table.Rows[i][0].ToString(), table.Rows[i][1].ToString(), table.Rows[i][5].ToString(),
-                    table.Rows[i][3].ToString(), Convert.ToBoolean(table.Rows[i][2]), table.Rows[i][6].ToString());
+                    table.Rows[i][3].ToString(), Convert.ToBoolean(table.Rows[i][2]), table.Rows[i][6].ToString(),table.Rows[i][7].ToString());
                 App.specialisations.Add(specialisationEntities);
             }
         }
@@ -181,7 +181,7 @@ namespace DimplomStandart
                 id: table.Rows[i]["id"].ToString(), idStudent: table.Rows[i]["id_student"].ToString(), idDiscipline: table.Rows[i]["id_discipline"].ToString(),
                  score: table.Rows[i]["score"].ToString(),
                 moreInfo: table.Rows[i]["more_info"].ToString(), typeOfActivity: table.Rows[i]["type_of_activity"].ToString(), useMethodsEducation: table.Rows[i]["use_methods_education"].ToString(),
-                placePassage: table.Rows[i]["place_passage"].ToString(), isCourse: table.Rows[i]["is_course_work"].ToString()!=""?true:false
+                placePassage: table.Rows[i]["place_passage"].ToString(), isCourse: table.Rows[i]["is_course_work"].ToString()!=""? Convert.ToBoolean(table.Rows[i]["is_course_work"]): Convert.ToBoolean(table.Rows[i]["is_course_work"])
                 );
                 App.itogDisciplines.Add(itogDisciplineEntities);
             }
