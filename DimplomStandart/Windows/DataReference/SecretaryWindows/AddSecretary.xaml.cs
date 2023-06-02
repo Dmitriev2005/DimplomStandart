@@ -43,8 +43,7 @@ namespace DimplomStandart.Windows.DataReference.SecretaryWindows
                 command.Parameters.AddWithValue("@Id", SecretaryEntities.Id);
                 command.ExecuteNonQuery();
 
-                int index = App.secretaries.FindIndex(q => q.Id == SecretaryEntities.Id);
-                App.secretaries[index] = SecretaryEntities;
+                App.Refresh();
                 Close();
             }
             else

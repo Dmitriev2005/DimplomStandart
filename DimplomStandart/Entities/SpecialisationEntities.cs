@@ -49,7 +49,7 @@ namespace DimplomStandart.Entities
                 foreach (var item in App.specialisations)
                     if ((item.NameShort.Length + 1) < value.Length)
                         if (item.NameShort == value.Remove(item.NameShort.Length) && item.YearSpecialisation == value.Remove(0, item.NameShort.Length + 1))
-                            Id = item.Id;
+                             Id = item.Id;
 
             }
         }

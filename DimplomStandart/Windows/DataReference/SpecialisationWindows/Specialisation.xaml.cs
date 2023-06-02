@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,37 +63,22 @@ namespace DimplomStandart.Windows.DataReference.SpecialisationWindows
         //Событие удаления
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            SpecialisationEntities specialisation = dgSpecialisation.SelectedItem as SpecialisationEntities;
+            var answer = MessageBox.Show("При удалениие специальности, будут удаленные все связанные упоменания данной специальности! " +
+                "Вы уверенны что хотите этого?","Требуется подтверждение",MessageBoxButton.YesNo);
+            if(answer == MessageBoxResult.Yes)
+            {
+                SpecialisationEntities specialisation = dgSpecialisation.SelectedItem as SpecialisationEntities;
 
-            string idDiscipline = (from q in App.disciplines where q.IdSpecialisation==specialisation.Id select q.Id).ToList().Single();
-            string idGroup = (from q in App.groups where q.Specialisation==specialisation.Id select q.Id).ToList().Single();
-            string idStudent = (from q in App.students where q.Group==idGroup select q.Id).ToList().Single();
+                NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM public.specialisation WHERE id = @Id::bigint", App.Connection());
+                command.Parameters.AddWithValue("@Id", specialisation.Id);
+                command.ExecuteNonQuery();
 
-            NpgsqlCommand command = new NpgsqlCommand("DELETE FROM public.specialisation_discipline WHERE id_discipline = @Id", App.Connection());
-            command.Parameters.AddWithValue("@Id", idDiscipline);
-            command.ExecuteNonQuery();
+                App.Refresh();
 
-            command = new NpgsqlCommand("DELETE FROM public.discipline WHERE id = @Id", App.Connection());
-            command.Parameters.AddWithValue("@Id", idDiscipline);
-            command.ExecuteNonQuery();
+                dgSpecialisation.ItemsSource = null;
+                dgSpecialisation.ItemsSource = App.specialisations;
 
-            command = new NpgsqlCommand("DELETE FROM public.student WHERE id = @Id", App.Connection());
-            command.Parameters.AddWithValue("@Id", idStudent);
-            command.ExecuteNonQuery();
-
-
-            command = new NpgsqlCommand("DELETE FROM public.group WHERE id = @Id",App.Connection());
-            command.Parameters.AddWithValue("@Id", idGroup);
-            command.ExecuteNonQuery();
-
-            command = new NpgsqlCommand($"DELETE FROM public.specialisation WHERE id = @Id", App.Connection());
-            command.Parameters.AddWithValue("@Id", specialisation.Id);
-            command.ExecuteNonQuery();
-
-            App.Refresh();
-
-            dgSpecialisation.ItemsSource = null;
-            dgSpecialisation.ItemsSource = App.specialisations;
+            }
         }
         //Событие поиска
         private void btnFind_Click(object sender, RoutedEventArgs e)

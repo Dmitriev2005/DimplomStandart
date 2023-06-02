@@ -50,6 +50,7 @@ namespace DimplomStandart
         } 
         private static void LoadDisciplines()
         {
+            disciplines.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.discipline");
 
@@ -64,6 +65,7 @@ namespace DimplomStandart
         }
         private static void LoadSpecialisations()
         {
+            App.specialisations.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.specialisation");
 
@@ -76,17 +78,20 @@ namespace DimplomStandart
             }
         }
         private static void LoadSecretaries() {
+            App.secretaries.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.secretary");
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                SecretaryEntities secretaryEntities = new SecretaryEntities(table.Rows[i][0].ToString(), table.Rows[i][1].ToString(), table.Rows[i][2].ToString());
+                SecretaryEntities secretaryEntities = new SecretaryEntities(id:table.Rows[i]["id"].ToString(), name: table.Rows[i]["name"].ToString(), 
+                    specialisation: table.Rows[i]["specialisation"].ToString());
                 App.secretaries.Add(secretaryEntities);
             }
         }
         private static void LoadGroups()
         {
+            App.groups.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.group");
 
@@ -102,6 +107,7 @@ namespace DimplomStandart
         }
         private static void LoadOrganisation()
         {
+            App.organization = new OrganisationEntities();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.organisation");
 
@@ -113,6 +119,7 @@ namespace DimplomStandart
         }
         private static void LoadStudents()
         {
+            students.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.student");
 
@@ -153,6 +160,7 @@ namespace DimplomStandart
         }
         private static void LoadCodeCountrys()
         {
+            codeCountrys.Clear();
             DataTableCreator dataTableCreator = new DataTableCreator();
             DataTable table = dataTableCreator.GiveMeDataTable("select * from public.code_country");
 
