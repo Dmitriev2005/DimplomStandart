@@ -97,11 +97,16 @@ namespace DimplomStandart
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                
+                DateTime dateIssueDocumentSQL, dateResultGekSQL, orderDropStudentDateSQL = new DateTime();
+
+                dateResultGekSQL = DateTime.Parse(table.Rows[i]["date_result_gek"].ToString());
+                dateIssueDocumentSQL = DateTime.Parse(table.Rows[i]["date_issue_document"].ToString());
+                orderDropStudentDateSQL = DateTime.Parse(table.Rows[i]["order_drop_student_date"].ToString());
+
                 GroupEntities groupEntities = new GroupEntities(id:table.Rows[i]["id"].ToString(), name:table.Rows[i]["name"].ToString(), specialisation:table.Rows[i]["specialisation"].ToString(), 
-                    levelTraning:table.Rows[i]["level_training"].ToString(), nameFactory:table.Rows[i]["name_factory"].ToString(), dateResultGek:table.Rows[i]["date_result_gek"].ToString(), dateIssueDocument:table.Rows[i]["date_issue_document"].ToString(),
+                    levelTraning:table.Rows[i]["level_training"].ToString(), nameFactory:table.Rows[i]["name_factory"].ToString(), dateResultGek:dateResultGekSQL, dateIssueDocument:dateIssueDocumentSQL,
                     presidentGek:table.Rows[i]["president_gek"].ToString(), secretary:table.Rows[i]["secretary"].ToString(), formStudy:table.Rows[i]["form_study"].ToString(), protocolGek:table.Rows[i]["protocol_gek"].ToString(), orderDropStudent:table.Rows[i]["order_drop_student"].ToString(),
-                    orderDropStudentDate:table.Rows[i]["order_drop_student_date"].ToString(), moreInfo:table.Rows[i]["more_info"].ToString(), note:table.Rows[i]["note"].ToString(), isLoadToFrdo:Convert.ToBoolean(table.Rows[i]["is_load_to_frdo"]));
+                    orderDropStudentDate:orderDropStudentDateSQL, moreInfo:table.Rows[i]["more_info"].ToString(), note:table.Rows[i]["note"].ToString(), isLoadToFrdo:Convert.ToBoolean(table.Rows[i]["is_load_to_frdo"]));
                 App.groups.Add(groupEntities);
             }
         }
@@ -178,11 +183,16 @@ namespace DimplomStandart
             itogDisciplines.Clear();
             for (int i = 0; i < table.Rows.Count; i++)
             {
+                bool isCourseSQL = false;
+                if (table.Rows[i]["is_course_work"].ToString() != "")
+                    isCourseSQL = Convert.ToBoolean(table.Rows[i]["is_course_work"].ToString());
+
                 ItogDisciplineEntities itogDisciplineEntities = new ItogDisciplineEntities(
                 id: table.Rows[i]["id"].ToString(), idStudent: table.Rows[i]["id_student"].ToString(), idDiscipline: table.Rows[i]["id_discipline"].ToString(),
                  score: table.Rows[i]["score"].ToString(),
                 moreInfo: table.Rows[i]["more_info"].ToString(), typeOfActivity: table.Rows[i]["type_of_activity"].ToString(), useMethodsEducation: table.Rows[i]["use_methods_education"].ToString(),
-                placePassage: table.Rows[i]["place_passage"].ToString(), isCourse: table.Rows[i]["is_course_work"].ToString()!=""? Convert.ToBoolean(table.Rows[i]["is_course_work"]): Convert.ToBoolean(table.Rows[i]["is_course_work"])
+                placePassage: table.Rows[i]["place_passage"].ToString(), 
+                isCourse: isCourseSQL
                 );
                 App.itogDisciplines.Add(itogDisciplineEntities);
             }

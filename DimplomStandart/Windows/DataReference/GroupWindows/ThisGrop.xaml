@@ -46,13 +46,13 @@
 
                         <DataGridTextColumn Header="Уровень подготовки" Binding="{Binding LevelTraning}"/>
                         <DataGridTextColumn Header="Наименование предприятия" Binding="{Binding NameFactory}"/>
-                        <DataGridTextColumn Header="Дата решения ГЭК" Binding="{Binding DateResultGek}"/>
-                        <DataGridTextColumn Header="Дата выдачи документов" Binding="{Binding DateIssueDocument}"/>
+                        <DataGridTextColumn Header="Дата решения ГЭК" Binding="{Binding DateResultGek, StringFormat=\{0:dd.MM.yyyy\}}"/>
+                        <DataGridTextColumn Header="Дата выдачи документов" Binding="{Binding DateIssueDocument, StringFormat=\{0:dd.MM.yyyy\}}"/>
                         <DataGridTextColumn Header="Секретарь" Binding="{Binding SecretaryStr}"/>
                         <DataGridTextColumn Header="Форма обучения" Binding="{Binding FormStudy}"/>
                         <DataGridTextColumn Header="Протокол ГЭК" Binding="{Binding ProtocolGek}"/>
                         <DataGridTextColumn Header="Приказ об отчислении №" Binding="{Binding OrderDropStudent}"/>
-                        <DataGridTextColumn Header="Дата приказа об отчислении" Binding="{Binding OrderDropStudentDate}"/>
+                        <DataGridTextColumn Header="Дата приказа об отчислении" Binding="{Binding OrderDropStudentDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
 
                         <DataGridTextColumn Header="Дополнительные сведения" Binding="{Binding MoreInfo}"/>
                         <DataGridTextColumn Header="Примечение" Binding="{Binding Note}"/>

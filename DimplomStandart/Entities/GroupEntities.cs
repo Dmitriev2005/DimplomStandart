@@ -10,8 +10,8 @@ namespace DimplomStandart.Entities
     {
        
         public GroupEntities(string id = "", string name = "", string specialisation = "", string levelTraning = "", string normalSizeStudy = "", string nameFactory = "", 
-            string dateResultGek = "", string dateIssueDocument = "", string presidentGek = "", string isVPresident = "", string secretary = "", string formStudy = "", string protocolGek = "", string orderDropStudent = "", 
-            string orderDropStudentDate = "", string moreInfo = "", string note = "", bool isLoadToFrdo = false)
+            DateTime? dateResultGek = null, DateTime? dateIssueDocument = null, string presidentGek = "", string isVPresident = "", string secretary = "", string formStudy = "", string protocolGek = "", string orderDropStudent = "", 
+            DateTime? orderDropStudentDate = null, string moreInfo = "", string note = "", bool isLoadToFrdo = false)
         {
             Id = id;
             Name = name;
@@ -36,14 +36,14 @@ namespace DimplomStandart.Entities
         public string Specialisation { get; set; }
         public string LevelTraning { get; set; }//Базовый уровень, профильный уровень
         public string NameFactory { get; set; }
-        public string DateResultGek { get;set; }
-        public string DateIssueDocument { get; set; }
+        public DateTime? DateResultGek { get;set; }
+        public DateTime? DateIssueDocument { get; set; }
         public string PresidentGek { get; set; }
         public string Secretary { get; set; }
         public string FormStudy { get; set; }
         public string ProtocolGek { get; set; }
         public string OrderDropStudent { get; set; }
-        public string OrderDropStudentDate { get; set; }
+        public DateTime? OrderDropStudentDate { get; set; }
         public string MoreInfo { get; set; }
         public string Note { get; set; }
         public bool IsLoadToFrdo { get; set; }

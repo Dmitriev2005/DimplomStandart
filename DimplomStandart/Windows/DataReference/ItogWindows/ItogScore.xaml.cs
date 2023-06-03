@@ -26,9 +26,6 @@ namespace DimplomStandart.Windows.DataReference.ItogWindows
             foreach (var item in App.groups)
                 cmbGroup.Items.Add(item.Name);
 
-
-
-
             dgStudent.ItemsSource = null;
             dgStudent.ItemsSource = (from q in App.students where q.GroupStr == cmbGroup.SelectedItem.ToString() select q).ToList();
 

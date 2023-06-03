@@ -27,27 +27,18 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
         {
             InitializeComponent();
 
+            foreach (var item in App.students)
+                cmbGroup.Items.Add(item.GroupStr);
+
             dgStudent.ItemsSource = null;
+
             dgStudent.ItemsSource = App.students;
         }
-
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            tbSearch.Text = string.Empty;
 
             dgStudent.ItemsSource = null;
             dgStudent.ItemsSource = App.students;
-        }
-
-        private void btnFind_Click(object sender, RoutedEventArgs e)
-        {
-            List<StudentEntities> buffer = new List<StudentEntities>();
-
-            buffer = App.students.Where(p => p.SurnameIm.Contains(tbSearch.Text)).ToList();
-
-            dgStudent.ItemsSource = null;
-            dgStudent.ItemsSource = buffer;
-
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -95,6 +86,13 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
 
             dgStudent.ItemsSource = null;
             dgStudent.ItemsSource = App.students;
+
+        }
+        private void cmbGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+                dgStudent.ItemsSource = null;
+                dgStudent.ItemsSource = (from q in App.students where q.GroupStr == cmbGroup.SelectedItem.ToString() select q).ToList();
+
 
         }
     }

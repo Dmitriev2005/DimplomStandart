@@ -23,11 +23,9 @@
                 <Button Width="32" Height="32" x:Name="btnRemove" ToolTip="Удалить" Click="btnRemove_Click">
                     <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
                 </Button>
-                <Label Content="Поиск" Margin="10,0,0,0"/>
-                <TextBox Width="200" x:Name="tbSearch"/>
-                <Button Width="32" Height="32" x:Name="btnFind" ToolTip="Найти" Click="btnFind_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\magnifer.png"/>
-                </Button>
+                
+                <ComboBox x:Name="cmbGroup" Text="{Binding GroupStr}" Width="100" SelectionChanged="cmbGroup_SelectionChanged" Margin="40,0,0,0"/>
+                
                 <Button Width="32" Height="32" x:Name="btnClear" ToolTip="Очистить" Margin="10,0,0,0" Click="btnClear_Click">
                     <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\sweeping.png"/>
                 </Button>
