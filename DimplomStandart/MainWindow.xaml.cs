@@ -23,6 +23,8 @@ using DimplomStandart.Windows.DataReference.OrganisationWindows;
 using DimplomStandart.Windows.DataReference.StudentWindows;
 using DimplomStandart.Windows.DataReference.CodeCountryWindows;
 using DimplomStandart.Windows.DataReference.ItogWindows;
+using DimplomStandart.Windows.Report;
+using DimplomStandart.Windows.Report.FRDOWindows;
 
 namespace DimplomStandart
 {
@@ -89,6 +91,13 @@ namespace DimplomStandart
                     score.Owner = this;
                     score.Show();
                     break;
+                case "ФРДО":
+                    FRDO frdo = new FRDO();
+                    frdo.Owner = this;
+                    frdo.ShowDialog();
+                    break;
+
+
 
 
             }

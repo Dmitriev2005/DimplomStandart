@@ -27,6 +27,7 @@ namespace DimplomStandart.Classes
                     {
                         if (textElement.Text == item.Key)
                             textElement.Text = item.Value;
+                        //else if (textElement.Text == "<DISCIPLINE>") ;
 
                     }
                 }
