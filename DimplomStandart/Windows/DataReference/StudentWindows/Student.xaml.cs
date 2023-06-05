@@ -95,5 +95,20 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
 
 
         }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgStudent.SelectedItem != null)
+            {
+                Print print = new Print(dgStudent.SelectedItem as StudentEntities);
+                print.ShowDialog();
+            }
+            else
+                MessageBox.Show("Вы должны выбрать студента!");
+
+            Application.Current.MainWindow.Show();
+            Application.Current.MainWindow.Activate();
+
+        }
     }
 }

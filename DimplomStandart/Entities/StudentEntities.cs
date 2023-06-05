@@ -110,15 +110,59 @@ namespace DimplomStandart.Entities
        
         public string CodeCountryStr
         {
-            get{
+            get
+            {
                 if ((from q in App.codeCountrys where q.Id == CodeCountry select q.Code).ToList().Any())
                     return (from q in App.codeCountrys where q.Id == CodeCountry select q.Code).ToList().Single();
                 else
                     return "";
             }
             set { }
+
         }
-        
+        public string SpecialisationLong
+        {
+            get {
+                if (Id != "")
+                    return (from q in App.groups where q.Id == Group select q.SpecialisationStrLong).ToList().Single();
+                else
+                    return "";
+            }
+            set { }
+        }
+        public string SpecialisationShort
+        {
+            get
+            {
+                if (Id != "")
+                    return (from q in App.groups where q.Id == Group select q.SpecialisationStrShort).ToList().Single();
+                else
+                    return "";
+            }
+            set { }
+        }
+        public string DateIssue
+        {
+            get
+            {
+                if (Id != "")
+                    return (from q in App.groups where q.Id == Group select Convert.ToDateTime(q.DateIssueDocument).ToString("dd.MM.yyyy")).ToList().Single();
+                else
+                    return "";
+            }
+            set { }
+        }
+        public string DateDropStudent
+        {
+            get
+            {
+                if (Id != "")
+                    return (from q in App.groups where q.Id == Group select Convert.ToDateTime(q.OrderDropStudentDate).ToString("dd.MM.yyyy")).ToList().Single();
+                else
+                    return "";
+            }
+            set { }
+        }
 
     }
 }

@@ -1,0 +1,28 @@
+﻿<Window x:Class="DimplomStandart.Windows.DataReference.StudentWindows.Print"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DimplomStandart.Windows.DataReference.StudentWindows"
+        mc:Ignorable="d"
+        Title="Печать" Height="300" Width="500">
+    <Grid>
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <Label Content="Выберите тип"/>
+                    <RadioButton Content="Титул диплома" GroupName="typeDocument"  IsChecked="true" Checked="RadioButton_Checked"/>
+                    <RadioButton Content="Приложение к диплому" GroupName="typeDocument" Checked="RadioButton_Checked"/>
+                </StackPanel>
+                <StackPanel>
+                    <CheckBox Content="Печать всей группы" x:Name="IsGroup" Margin="0,20,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Button Content="Записать в файл" Margin="0,0,20,0" x:Name="btnWrite" Click="btnWrite_Click"/>
+                    <Button Content="Отмена" x:Name="btnCancel" Click="btnCancel_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
