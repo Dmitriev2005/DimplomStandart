@@ -14,22 +14,22 @@
             <StackPanel Orientation="Horizontal">
 
                 <Button Width="32" Height="32" x:Name="btnAdd" ToolTip="Добавить" Click="btnAdd_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\plus.png"/>
+                    <Image Source="\Resourses\plus.png"/>
                 </Button>
                 <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEdit" ToolTip="Редактировать" Click="btnEdit_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
+                    <Image Source="\Resourses\pencil.png"/>
 
                 </Button>
                 <Button Width="32" Height="32" x:Name="btnRemove" ToolTip="Удалить" Click="btnRemove_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
+                    <Image Source="\Resourses\remove.png"/>
                 </Button>
                 <Button Width="32" Height="32" x:Name="btnPrint" ToolTip="Печать" Click="btnPrint_Click" Margin="40,0,0,0">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\printer.png"/>
+                    <Image Source="\Resourses\printer.png"/>
                 </Button>
                 <ComboBox x:Name="cmbGroup" Text="{Binding GroupStr}" Width="100" SelectionChanged="cmbGroup_SelectionChanged" Margin="40,0,0,0"/>
                 
                 <Button Width="32" Height="32" x:Name="btnClear" ToolTip="Очистить" Margin="10,0,0,0" Click="btnClear_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\sweeping.png"/>
+                    <Image Source="\Resourses\sweeping.png"/>
                 </Button>
             </StackPanel>
 

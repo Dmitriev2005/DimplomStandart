@@ -5,16 +5,103 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>diplom.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Resourses\**" />
+    <EmbeddedResource Remove="Resourses\**" />
+    <None Remove="Resourses\**" />
+    <Page Remove="Resourses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+    <COMReference Include="{d37e2a3e-8545-3a39-9f4f-31827c9124ab}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>d37e2a3e-8545-3a39-9f4f-31827c9124ab</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="diplom.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\diplom.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\printer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\plus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\pencil.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\NewQuestion.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\magnifer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\sweeping.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\remove.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resourses\ColorHandBook.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
     <PackageReference Include="Npgsql" Version="7.0.4" />
+    <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resourses\" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

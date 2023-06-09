@@ -16,7 +16,7 @@ namespace DimplomStandart.Entities
             string sourceFunding = "", DateTime? dateContractCo = null, string nameOrganisationEmployer = "", string ogrnEmployer = "", string kppEmployer = "",
             string subjectCo = "", string serialAndNumberIssueApplication = "", string yearEnd = "", bool isDublicate = false,
             string moreInfo = "", string note = "", string contractCo = "", string yearEndSchool = "",
-            string countryPastDocument = "", bool isContractCo = false)
+            string countryPastDocument = "", bool isContractCo = false, bool isCheckGreat = false)
         {
             Id = id;
             SurnameIm = surnameIm;
@@ -54,6 +54,7 @@ namespace DimplomStandart.Entities
             YearEndSchool = yearEndSchool;
             CountryPastDocument = countryPastDocument;
             IsContractCo = isContractCo;
+            IsCheckGreat = isCheckGreat;
         }
 
         public string Id { get; set; }
@@ -92,6 +93,7 @@ namespace DimplomStandart.Entities
         public string YearEndSchool { get; set; }
         public string CountryPastDocument { get; set; }
         public bool IsContractCo { get; set; }
+        public bool IsCheckGreat { get; set; }
         //////////////////////////////////////
         //////////////////////////////////////
 

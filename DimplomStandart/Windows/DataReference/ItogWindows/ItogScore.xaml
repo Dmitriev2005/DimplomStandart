@@ -66,7 +66,7 @@
                     <StackPanel Width="600">
                         <StackPanel Orientation="Horizontal">
                             <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEdit" ToolTip="Редактировать" Click="btnEdit_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
+                                <Image Source="\Resourses\pencil.png"/>
 
                             </Button>
                         </StackPanel>
@@ -84,7 +84,7 @@
                     <StackPanel Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEditP" ToolTip="Редактировать" Click="btnEditP_Click">
-                                <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
+                                <Image Source="\Resourses\pencil.png"/>
 
                             </Button>
 

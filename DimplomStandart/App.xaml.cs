@@ -155,7 +155,8 @@ namespace DimplomStandart
                       serialAndNumberIssueApplication: table.Rows[i]["serial_and_number_issue_application"].ToString(), yearEnd: table.Rows[i]["year_end"].ToString(),
                       isDublicate: Convert.ToBoolean(table.Rows[i]["is_dublicate"]), moreInfo: table.Rows[i]["more_info"].ToString(), note: table.Rows[i]["note"].ToString(),
                       contractCo: table.Rows[i]["contract_co"].ToString(), yearEndSchool: table.Rows[i]["year_end_shcool"].ToString(),
-                      countryPastDocument: table.Rows[i]["country_past_document"].ToString(), isContractCo: Convert.ToBoolean(table.Rows[i]["is_contract_co"].ToString())
+                      countryPastDocument: table.Rows[i]["country_past_document"].ToString(), isContractCo: Convert.ToBoolean(table.Rows[i]["is_contract_co"].ToString()),
+                      isCheckGreat: Convert.ToBoolean(table.Rows[i]["is_contract_co"].ToString())
 
                    );
 

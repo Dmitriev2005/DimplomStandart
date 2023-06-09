@@ -14,22 +14,22 @@
             <StackPanel Orientation="Horizontal">
 
                 <Button Width="32" Height="32" x:Name="btnAdd" ToolTip="Добавить" Click="btnAdd_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\plus.png"/>
+                    <Image Source="\Resourses\plus.png"/>
                 </Button>
                 <Button Width="32" Height="32" Margin="10,0,10,0" x:Name="btnEdit" ToolTip="Редактировать" Click="btnEdit_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\pencil.png"/>
+                    <Image Source="\Resourses\pencil.png"/>
 
                 </Button>
                 <Button Width="32" Height="32" x:Name="btnRemove" ToolTip="Удалить" Click="btnRemove_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\remove.png"/>
+                    <Image Source="\Resourses\remove.png"/>
                 </Button>
                 <Label Content="Поиск" Margin="40,0,0,0"/>
                 <TextBox Width="200" x:Name="tbSearch"/>
                 <Button Width="32" Height="32" x:Name="btnFind" ToolTip="Найти" Click="btnFind_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\magnifer.png"/>
+                    <Image Source="\Resourses\magnifer.png"/>
                 </Button>
                 <Button Width="32" Height="32" x:Name="btnClear" ToolTip="Очистить" Margin="40,0,0,0" Click="btnClear_Click">
-                    <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\sweeping.png"/>
+                    <Image Source="\Resourses\sweeping.png"/>
                 </Button>
             </StackPanel>
 

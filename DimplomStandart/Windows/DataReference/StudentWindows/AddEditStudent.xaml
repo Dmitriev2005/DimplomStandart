@@ -133,6 +133,9 @@
                                 
                             </StackPanel>
                             <StackPanel>
+                                <CheckBox Content="С отличием" IsChecked="{Binding IsCheckGreat}"/>
+                            </StackPanel>
+                            <StackPanel>
                                 <Label Content="Дополнительные сведения"/>
                                 <TextBox Text="{Binding MoreInfo}"/>
                             </StackPanel>

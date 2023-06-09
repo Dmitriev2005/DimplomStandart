@@ -61,7 +61,8 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                         "name_organisation_employer = @NameOrganisationEmployer, ogrn_employer = @OgrnEmployer::bigint, kpp_employer = @KppEmployer::bigint," +
                         "subject_co = @SubjectCo, view_document = @ViewDocument, number_past_document = @NumberPastDocumentEducation::bigint, serial_and_number_issue_application = @SerialNumberIssueApplication," +
                         "serial_and_number_issue_document = @SerialNumberIssueDocument, year_end = @YearEnd, is_dublicate = @IsDublicate::boolean," +
-                        "more_info = @MoreInfo,note = @Note, country_past_document = @CountryPastDocument, year_end_shcool = @YearEndSchool,is_contract_co = @IsContractCo   WHERE id = @Id::bigint", App.Connection());
+                        "more_info = @MoreInfo,note = @Note, country_past_document = @CountryPastDocument, year_end_shcool = @YearEndSchool, is_contract_co = @IsContractCo " +
+                        "is_check_great = @IsCheckGreat  WHERE id = @Id::bigint", App.Connection());
 
                     command.Parameters.AddWithValue("@Group", Student.Group);
                     command.Parameters.AddWithValue("@SurnameIm", Student.SurnameIm);
@@ -99,6 +100,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                     command.Parameters.AddWithValue("@CountryPastDocument", Student.CountryPastDocument);
                     command.Parameters.AddWithValue("@YearEndSchool", Student.YearEndSchool);
                     command.Parameters.AddWithValue("@IsContractCo", Student.IsContractCo);
+                    command.Parameters.AddWithValue("@IsCheckGreat", Student.IsCheckGreat);
 
 
                     command.ExecuteNonQuery();
@@ -113,7 +115,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                         "registration_number = @RegNumberIssueDocument::bigint, gender = @Gender::enum_gender, year_start = @YearStart," +
                         "level_education = @LevelEducation, source_funding = @SourceFunding, view_document = @ViewDocument, number_past_document = @NumberPastDocumentEducation::bigint, serial_and_number_issue_application = @SerialNumberIssueApplication," +
                         "serial_and_number_issue_document = @SerialNumberIssueDocument, year_end = @YearEnd, is_dublicate = @IsDublicate::boolean," +
-                        "more_info = @MoreInfo,note = @Note, country_past_document = @CountryPastDocument, year_end_shcool = @YearEndSchool, is_contract_co = @IsContractCo  WHERE id = @Id::bigint", App.Connection());
+                        "more_info = @MoreInfo,note = @Note, country_past_document = @CountryPastDocument, year_end_shcool = @YearEndSchool, is_contract_co = @IsContractCo, is_check_great = @IsCheckGreat  WHERE id = @Id::bigint", App.Connection());
 
                     command.Parameters.AddWithValue("@Group", Student.Group);
                     command.Parameters.AddWithValue("@SurnameIm", Student.SurnameIm);
@@ -145,6 +147,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                     command.Parameters.AddWithValue("@CountryPastDocument", Student.CountryPastDocument);
                     command.Parameters.AddWithValue("@YearEndSchool", Student.YearEndSchool);
                     command.Parameters.AddWithValue("@IsContractCo", Student.IsContractCo);
+                    command.Parameters.AddWithValue("@IsCheckGreat", Student.IsCheckGreat);
 
                     command.ExecuteNonQuery();
 
@@ -170,14 +173,14 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                         "subject_co, view_document, number_past_document, " +
                         "serial_and_number_issue_application,serial_and_number_issue_document, " +
                         "year_end, is_dublicate, more_info, note," +
-                        "country_past_document, year_end_shcool,is_contract_co) " +
+                        "country_past_document, year_end_shcool,is_contract_co,is_check_great) " +
                         "values(@Group::bigint,@SurnameIm,@NameIm,@LastNameIm,@SurnameDa,@NameDa,@LastNameDa," +
                         "@Snils::bigint,@DateBorn::date,@PlaceBorn,@CodeCountry::bigint,@SeriesPastDocumentEducation," +
                         "@SurnamePastDocument,@RegNumberIssueDocument::bigint,@ContractCo::bigint,@Gender::enum_gender," +
                         "@YearStart,@LevelEducation,@SourceFunding,@DateContractCo::date, @NameOrganisationEmployer," +
                         "@OgrnEmployer::bigint,@KppEmployer::bigint,@SubjectCo,@ViewDocument,@NumberPastDocumentEducation::bigint," +
                         "@SerialNumberIssueApplication,@SerialNumberIssueDocument,@YearEnd, @IsDublicate::boolean," +
-                        "@MoreInfo,@Note,@CountryPastDocument,@YearEndSchool,@IsContractCo)", App.Connection());
+                        "@MoreInfo,@Note,@CountryPastDocument,@YearEndSchool,@IsContractCo,@IsCheckGreat)", App.Connection());
 
 
                     command.Parameters.AddWithValue("@Group", Student.Group);
@@ -216,6 +219,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                     command.Parameters.AddWithValue("@CountryPastDocument", Student.CountryPastDocument);
                     command.Parameters.AddWithValue("@YearEndSchool", Student.YearEndSchool);
                     command.Parameters.AddWithValue("@IsContractCo", Student.IsContractCo);
+                    command.Parameters.AddWithValue("@IsCheckGreat", Student.IsCheckGreat);
 
 
                     command.ExecuteNonQuery();
@@ -234,14 +238,14 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                     "view_document, number_past_document, " +
                     "serial_and_number_issue_application,serial_and_number_issue_document, " +
                     "year_end, is_dublicate, more_info, note," +
-                    "country_past_document, year_end_shcool,is_contract_co) " +
+                    "country_past_document, year_end_shcool,is_contract_co,is_check_great) " +
                     "values(@Group::bigint,@SurnameIm,@NameIm,@LastNameIm,@SurnameDa,@NameDa,@LastNameDa," +
                     "@Snils::bigint,@DateBorn::date,@PlaceBorn,@CodeCountry::bigint,@SeriesPastDocumentEducation," +
                     "@SurnamePastDocument,@RegNumberIssueDocument::bigint,@Gender::enum_gender," +
                     "@YearStart,@LevelEducation,@SourceFunding," +
                     "@ViewDocument,@NumberPastDocumentEducation::bigint," +
                     "@SerialNumberIssueApplication,@SerialNumberIssueDocument,@YearEnd, @IsDublicate::boolean," +
-                    "@MoreInfo,@Note,@CountryPastDocument,@YearEndSchool,@IsContractCo)", App.Connection());
+                    "@MoreInfo,@Note,@CountryPastDocument,@YearEndSchool,@IsContractCo,@IsCheckGreat)", App.Connection());
 
 
                     command.Parameters.AddWithValue("@Group", Student.Group);
@@ -274,6 +278,7 @@ namespace DimplomStandart.Windows.DataReference.StudentWindows
                     command.Parameters.AddWithValue("@CountryPastDocument", Student.CountryPastDocument);
                     command.Parameters.AddWithValue("@YearEndSchool", Student.YearEndSchool);
                     command.Parameters.AddWithValue("@IsContractCo", Student.IsContractCo);
+                    command.Parameters.AddWithValue("@IsCheckGreat", Student.IsCheckGreat);
 
 
 

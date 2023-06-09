@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DimplomStandart"
         mc:Ignorable="d"
         Title="Диплом-стандарт" Height="450" Width="800" WindowStartupLocation="CenterScreen" MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Icon="L:\C#\DimplomStandart\DimplomStandart\Resourses\diplom.png">
+         Closing="Window_Closing">
     <Grid Background="#FFD9D4D4">
         <StackPanel>
             <Menu FontSize="18" FontFamily="Cascadia Code">
@@ -20,19 +20,11 @@
                     <MenuItem Header="Студенты" Click="MenuItem_Click"/>
                     <Separator/>
                     <MenuItem Header="Дисциплины" Click="MenuItem_Click"/>
-                    <MenuItem Header="Учебный план"/>
                     <MenuItem Header="Секретари" Click="MenuItem_Click"/>
                     <MenuItem Header="Коды стран" Click="MenuItem_Click"/>
 
                     <Separator/>
                     <MenuItem Header="Итоговые оценки документов" Click="MenuItem_Click"/>
-                    <MenuItem Header="Итоговые оценки переподготовки"/>
-                </MenuItem>
-                <MenuItem Header="Отчеты">
-                    <MenuItem.Icon>
-                        <Image Source="L:\C#\DimplomStandart\DimplomStandart\Resourses\NewReport.png"/>
-                    </MenuItem.Icon>
-                    <MenuItem Header="ФРДО" Click="MenuItem_Click"/>
                 </MenuItem>
                 <MenuItem Header="Справка">
                     <MenuItem.Icon>

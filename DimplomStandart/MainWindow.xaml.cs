@@ -23,8 +23,6 @@ using DimplomStandart.Windows.DataReference.OrganisationWindows;
 using DimplomStandart.Windows.DataReference.StudentWindows;
 using DimplomStandart.Windows.DataReference.CodeCountryWindows;
 using DimplomStandart.Windows.DataReference.ItogWindows;
-using DimplomStandart.Windows.Report;
-using DimplomStandart.Windows.Report.FRDOWindows;
 
 namespace DimplomStandart
 {
@@ -91,11 +89,6 @@ namespace DimplomStandart
                     score.Owner = this;
                     score.Show();
                     break;
-                case "ФРДО":
-                    FRDO frdo = new FRDO();
-                    frdo.Owner = this;
-                    frdo.ShowDialog();
-                    break;
 
 
 
@@ -109,6 +102,13 @@ namespace DimplomStandart
             //DataTableCreator dataTableCreator = new DataTableCreator();
             //dgDiscipline.ItemsSource = dataTableCreator.GiveMeDataTable("select name, type from public.discipline").DefaultView;
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите выйти?", "Выход",
+                MessageBoxButton.YesNo) == MessageBoxResult.No)
+                e.Cancel = true;  
         }
     }
 }

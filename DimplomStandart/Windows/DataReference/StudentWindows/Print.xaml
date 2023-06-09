@@ -15,7 +15,7 @@
                     <RadioButton Content="Приложение к диплому" GroupName="typeDocument" Checked="RadioButton_Checked"/>
                 </StackPanel>
                 <StackPanel>
-                    <CheckBox Content="Печать всей группы" x:Name="IsGroup" Margin="0,20,0,0"/>
+                    <CheckBox Content="Печать всей группы" x:Name="chbIsGroup" Margin="0,20,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                     <Button Content="Записать в файл" Margin="0,0,20,0" x:Name="btnWrite" Click="btnWrite_Click"/>
